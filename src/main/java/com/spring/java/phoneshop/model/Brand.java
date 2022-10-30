@@ -1,18 +1,25 @@
 package com.spring.java.phoneshop.model;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity(name = "brands")
+@Entity
 @Data
+@Table(name = "brands")
 public class Brand {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(
+            name = "brand_sequence",
+            sequenceName = "brand_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "brand_sequence"
+    )
     private Integer id;
 
     private String name;
