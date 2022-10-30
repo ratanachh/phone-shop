@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApiServiceException extends Exception {
+public class ApiServiceException extends RuntimeException {
     private HttpStatus status;
     private String message;
 }

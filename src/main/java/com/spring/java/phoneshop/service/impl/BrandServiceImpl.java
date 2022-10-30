@@ -24,20 +24,20 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public Brand findById(Integer id) throws ApiServiceException {
+    public Brand findById(Integer id) {
         return brandRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(Brand.class.getName(), id));
     }
 
     @Override
-    public Brand update(Integer id, BrandDTO dto) throws ApiServiceException {
+    public Brand update(Integer id, BrandDTO dto) {
         Brand brand = findById(id);
         brand.setName(dto.getName());
         return brandRepository.save(brand);
     }
 
     @Override
-    public void delete(Integer id) throws ApiServiceException {
+    public void delete(Integer id) {
         Brand brand = findById(id);
         brandRepository.delete(brand);
         log.info("brand with id = %d is deleted.".formatted(id));

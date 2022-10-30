@@ -24,19 +24,19 @@ public class ModelServiceImpl implements ModelService {
     }
 
     @Override
-    public Model findById(Integer id) throws ApiServiceException {
+    public Model findById(Integer id) {
         return modelRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(Model.class.getName(), id));
     }
 
     @Override
-    public Model update(Integer id, ModelDTO dto) throws ApiServiceException {
+    public Model update(Integer id, ModelDTO dto) {
         Model model = findById(id);
         return modelRepository.save(model);
     }
 
     @Override
-    public void delete(Integer id) throws ApiServiceException {
+    public void delete(Integer id) {
         Model model = findById(id);
         modelRepository.delete(model);
         log.info("brand with id = %d is deleted.".formatted(id));

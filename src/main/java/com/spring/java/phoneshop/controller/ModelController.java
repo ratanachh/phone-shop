@@ -26,17 +26,17 @@ public class ModelController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<?> find(@PathVariable Integer id) throws ApiServiceException {
+    public ResponseEntity<?> find(@PathVariable Integer id) {
         return ResponseEntity.ok(modelService.findById(id));
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody ModelDTO dto) throws ApiServiceException {
+    public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody ModelDTO dto) {
         return ResponseEntity.ok(modelService.update(id, dto));
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<?> deleteById (@PathVariable("id") Integer id) throws ApiServiceException {
+    public ResponseEntity<?> deleteById (@PathVariable("id") Integer id) {
         modelService.delete(id);
         return ResponseEntity.ok().build();
     }

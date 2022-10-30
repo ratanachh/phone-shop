@@ -28,17 +28,17 @@ public class BrandController {
 
 
     @GetMapping("{id}")
-    public ResponseEntity<?> find(@PathVariable Integer id) throws ApiServiceException {
+    public ResponseEntity<?> find(@PathVariable Integer id) {
         return ResponseEntity.ok(brandService.findById(id));
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody BrandDTO dto) throws ApiServiceException {
+    public ResponseEntity<?> update(@PathVariable("id") Integer id, @RequestBody BrandDTO dto) {
         return ResponseEntity.ok(brandService.update(id, dto));
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<?> deleteById (@PathVariable("id") Integer id) throws ApiServiceException {
+    public ResponseEntity<?> deleteById (@PathVariable("id") Integer id) {
         brandService.delete(id);
         return ResponseEntity.ok().build();
     }

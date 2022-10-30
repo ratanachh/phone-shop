@@ -9,11 +9,11 @@ import java.util.Optional;
 
 public interface BrandService {
     Brand save(Brand entity);
-    Brand findById(Integer id) throws ApiServiceException;
+    Brand findById(Integer id);
 
-    Brand update(Integer id, BrandDTO dto) throws ApiServiceException;
+    Brand update(Integer id, BrandDTO dto);
 
-    void delete(Integer id) throws ApiServiceException;
+    void delete(Integer id);
 
     List<Brand> getBrands();
 }

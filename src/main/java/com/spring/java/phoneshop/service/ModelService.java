@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface ModelService {
     Model save(Model entity);
-    Model findById(Integer id) throws ApiServiceException;
+    Model findById(Integer id);
 
-    Model update(Integer id, ModelDTO dto) throws ApiServiceException;
+    Model update(Integer id, ModelDTO dto);
 
-    void delete(Integer id) throws ApiServiceException;
+    void delete(Integer id);
 
     List<Model> getModels();
 }
