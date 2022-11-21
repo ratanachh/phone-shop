@@ -1,15 +1,21 @@
 package com.spring.java.phoneshop.controller;
 
 import com.spring.java.phoneshop.dto.ModelDTO;
+import com.spring.java.phoneshop.dto.PageDTO;
+import com.spring.java.phoneshop.dto.PaginationDTO;
 import com.spring.java.phoneshop.exception.ApiServiceException;
 import com.spring.java.phoneshop.mapper.ModelMapper;
+import com.spring.java.phoneshop.mapper.PageMapper;
 import com.spring.java.phoneshop.model.Model;
 import com.spring.java.phoneshop.service.ModelService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
@@ -42,11 +48,12 @@ public class ModelController {
     }
 
     @GetMapping
-    public ResponseEntity<?> list() {
-        List<ModelDTO> listModel = modelService.getModels()
-                .stream()
-                .map(ModelMapper.INSTANCE::toDTO)
-                .toList();
-        return ResponseEntity.ok(listModel);
+    public ResponseEntity<?> list(@RequestParam Map<String, String> params) {
+
+        Page<Model> page = modelService.getModels(params);
+
+        PageDTO dto = PageMapper.INSTANCE.toDOT(page);
+        dto.setList(page.stream().map(ModelMapper.INSTANCE::toDTO).collect(Collectors.toList()));
+        return ResponseEntity.ok(dto);
     }
 }

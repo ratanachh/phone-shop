@@ -1,22 +1,22 @@
 package com.spring.java.phoneshop.service.impl;
 
 import com.spring.java.phoneshop.dto.BrandDTO;
-import com.spring.java.phoneshop.exception.ApiServiceException;
 import com.spring.java.phoneshop.exception.ResourceNotFoundException;
 import com.spring.java.phoneshop.model.Brand;
 import com.spring.java.phoneshop.repository.BrandRepository;
 import com.spring.java.phoneshop.service.BrandService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class BrandServiceImpl implements BrandService {
 
-    @Autowired
-    private BrandRepository brandRepository;
+    private final BrandRepository brandRepository;
 
     @Override
     public Brand save(Brand entity) {
@@ -40,7 +40,7 @@ public class BrandServiceImpl implements BrandService {
     public void delete(Integer id) {
         Brand brand = findById(id);
         brandRepository.delete(brand);
-        log.info("brand with id = %d is deleted.".formatted(id));
+        log.info(String.format("brand with id = %d is deleted.", id));
     }
 
     @Override

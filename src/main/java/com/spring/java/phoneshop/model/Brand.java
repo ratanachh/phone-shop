@@ -1,13 +1,16 @@
 package com.spring.java.phoneshop.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @Table(name = "brands")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Brand {
 
     @Id

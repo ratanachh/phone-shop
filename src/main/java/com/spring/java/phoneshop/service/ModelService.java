@@ -1,10 +1,10 @@
 package com.spring.java.phoneshop.service;
 
 import com.spring.java.phoneshop.dto.ModelDTO;
-import com.spring.java.phoneshop.exception.ApiServiceException;
 import com.spring.java.phoneshop.model.Model;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
+import java.util.Map;
 
 public interface ModelService {
     Model save(Model entity);
@@ -14,5 +14,5 @@ public interface ModelService {
 
     void delete(Integer id);
 
-    List<Model> getModels();
+    Page<Model> getModels(Map<String, String> params);
 }
